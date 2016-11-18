@@ -1,2 +1,4 @@
 ---
-# defaults file for logdna
+logdna_api_key: null
+logdna_monitoring_directories: null
+logdna_monitoring_files: null

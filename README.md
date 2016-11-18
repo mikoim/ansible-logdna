@@ -1,38 +1,46 @@
-Role Name
+ansible-logdna
 =========
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.org/mikoim/ansible-logdna.svg?branch=master)](https://travis-ci.org/mikoim/ansible-logdna)
+
+Install LogDNA's collector agent.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires Ansible 2.1 or higher.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```yaml
+# API Key (recommended)
+logdna_api_key: 0123456789abcdef0123456789abcdef
+
+# Monitoring directories and files (optinal)
+logdna_monitoring_directories:
+  - /opt/foo/bar/log
+  - /srv/hoge/logs
+logdna_monitoring_files:
+  - /opt/foo/bar/access.log
+  - /srv/hoge/logs/errors.log
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: servers
+  roles:
+     - { role: mikoim.logdna }
+```
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
