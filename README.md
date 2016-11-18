@@ -2,6 +2,7 @@ ansible-logdna
 =========
 
 [![Build Status](https://travis-ci.org/mikoim/ansible-logdna.svg?branch=master)](https://travis-ci.org/mikoim/ansible-logdna)
+[![Ansible Role](https://img.shields.io/ansible/role/13517.svg)](https://galaxy.ansible.com/mikoim/logdna/)
 
 Install LogDNA's collector agent.
 
