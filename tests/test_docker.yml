@@ -1,0 +1,32 @@
+---
+- name: initialize docker
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: bring up container
+      docker_container:
+        name: ansible-logdna
+        image: ubuntu:yakkety
+        detach: yes
+        tty: yes
+        command: sleep infinity
+        state: started
+
+    - name: register new container hostname
+      add_host: name=ansible-logdna
+
+- name: run roles in container
+  hosts: ansible-logdna
+  connection: docker
+
+  roles:
+    - ../../ansible-logdna
+
+- name: finalize docker
+  hosts: localhost
+  tasks:
+    - name: remove container
+      docker_container:
+        name: ansible-logdna
+        state: absent
