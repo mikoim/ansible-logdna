@@ -8,32 +8,27 @@ galaxy_info:
   github_branch: master
 
   platforms:
+  - name: Fedora
+    versions:
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
   - name: Debian
     versions:
-    - squeeze
-    - stretch
     - wheezy
+    - jessie
   - name: EL
     versions:
     - 6
     - 7
   - name: Ubuntu
     versions:
-  #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-  #  - precise
-  #  - quantal
-  #  - raring
-  #  - saucy
-  #  - trusty
-  #  - utopic
-  #  - vivid
-  #  - wily
+    - precise
+    - trusty
     - xenial
-  #  - yakkety
+    - yakkety
 
   galaxy_tags:
     - logging

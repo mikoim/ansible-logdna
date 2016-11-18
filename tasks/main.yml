@@ -1,4 +1,8 @@
 ---
+- name: Add package signing public key to keyring
+  apt_key: url=http://repo.logdna.com/logdna.gpg
+  when: ansible_os_family == "Debian"
+
 - name: Add LogDNA repository
   apt_repository:
     filename: logdna
@@ -13,12 +17,12 @@
     gpgcheck: no
   when: ansible_os_family == "RedHat"
 
-- name: Add package signing public key to keyring
-  apt_key: url=http://repo.logdna.com/logdna.gpg
-  when: ansible_os_family == "Debian"
-
 - name: Install LogDNA agent
-  apt: state=present name=logdna-agent allow_unauthenticated=yes
+  apt:
+    state: present
+    name: logdna-agent
+    allow_unauthenticated: yes
+    update_cache: yes
   when: ansible_os_family == "Debian"
 
 - name: Install LogDNA agent
