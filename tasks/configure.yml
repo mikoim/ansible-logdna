@@ -1,0 +1,19 @@
+---
+
+- name: Set LogDNA API Key
+  command: logdna-agent -k {{ logdna_api_key }}
+  when: logdna_api_key
+
+- name: Add monitoring directories
+  command: logdna-agent -d {{ item }}
+  when: logdna_monitoring_directories
+  with_items: logdna_monitoring_directories
+
+- name: Add monitoring files
+  command: logdna-agent -f {{ item }}
+  when: logdna_monitoring_files
+  with_items: logdna_monitoring_files
+
+- name: Start LogDNA agent
+  service: name=logdna-agent enabled=yes state=started
+  when: logdna_api_key

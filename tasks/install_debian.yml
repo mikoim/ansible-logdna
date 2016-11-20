@@ -1,0 +1,16 @@
+---
+
+- name: Add package signing public key to keyring
+  apt_key: url=http://repo.logdna.com/logdna.gpg
+
+- name: Add LogDNA repository
+  apt_repository:
+    filename: logdna
+    repo: deb http://repo.logdna.com stable main
+
+- name: Install LogDNA agent
+  apt:
+    state: present
+    name: logdna-agent
+    allow_unauthenticated: yes
+    update_cache: yes
